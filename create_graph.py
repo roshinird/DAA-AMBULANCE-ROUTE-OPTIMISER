@@ -13,26 +13,51 @@ print("Edges loaded:", len(edges_df))
 
 
 # -----------------------------------
-# 2. Create directed road graph
+# 2. Validate node data
+# -----------------------------------
+
+missing_nodes = nodes_df[
+    nodes_df["id"].isnull() |
+    nodes_df["latitude"].isnull() |
+    nodes_df["longitude"].isnull()
+]
+
+print("\nNodes with missing data:", len(missing_nodes))
+
+
+# -----------------------------------
+# 3. Validate edge data
+# -----------------------------------
+
+invalid_edges = edges_df[
+    edges_df["distance"].isnull() |
+    (edges_df["distance"] <= 0)
+]
+
+print("Edges with invalid distance:", len(invalid_edges))
+
+
+# -----------------------------------
+# 4. Create directed road graph
 # -----------------------------------
 
 G = nx.MultiDiGraph()
 
 
 # -----------------------------------
-# 3. Add nodes
+# 5. Add nodes
 # -----------------------------------
 
 for _, row in nodes_df.iterrows():
     G.add_node(
         int(row["id"]),
-        latitude=row["latitude"],
-        longitude=row["longitude"]
+        latitude=float(row["latitude"]),
+        longitude=float(row["longitude"])
     )
 
 
 # -----------------------------------
-# 4. Add edges
+# 6. Add edges
 # -----------------------------------
 
 for _, row in edges_df.iterrows():
@@ -47,7 +72,7 @@ for _, row in edges_df.iterrows():
 
 
 # -----------------------------------
-# 5. Display graph information
+# 7. Display graph information
 # -----------------------------------
 
 print("\nGraph created successfully!")
@@ -57,7 +82,7 @@ print("Number of edges:", G.number_of_edges())
 
 
 # -----------------------------------
-# 6. Check first node and edge
+# 8. Check first node and edge
 # -----------------------------------
 
 print("\nFirst node:")
@@ -68,18 +93,7 @@ print(list(G.edges(data=True))[0])
 
 
 # -----------------------------------
-# 7. Save graph
-# -----------------------------------
-
-nx.write_graphml(
-    G,
-    "data/routing_graph.graphml"
-)
-
-print("\nRouting graph saved to:")
-print("data/routing_graph.graphml")
-# -----------------------------------
-# 8. Check graph connectivity
+# 9. Check graph connectivity
 # -----------------------------------
 
 components = list(nx.weakly_connected_components(G))
@@ -89,3 +103,16 @@ print("\nNumber of connected components:", len(components))
 largest_component = max(components, key=len)
 
 print("Nodes in largest component:", len(largest_component))
+
+
+# -----------------------------------
+# 10. Save routing graph
+# -----------------------------------
+
+nx.write_graphml(
+    G,
+    "data/routing_graph.graphml"
+)
+
+print("\nRouting graph saved successfully!")
+print("Location: data/routing_graph.graphml")

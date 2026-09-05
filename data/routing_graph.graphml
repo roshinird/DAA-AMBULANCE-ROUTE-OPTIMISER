@@ -5,8 +5,8 @@
   <key id="d4" for="edge" attr.name="road_name" attr.type="string" />
   <key id="d3" for="edge" attr.name="road_type" attr.type="string" />
   <key id="d2" for="edge" attr.name="distance" attr.type="double" />
-  <key id="d1" for="node" attr.name="longitude" attr.type="float" />
-  <key id="d0" for="node" attr.name="latitude" attr.type="float" />
+  <key id="d1" for="node" attr.name="longitude" attr.type="double" />
+  <key id="d0" for="node" attr.name="latitude" attr.type="double" />
   <graph edgedefault="directed">
     <node id="30037862">
       <data key="d0">13.0109201</data>
@@ -22257,12 +22257,12 @@
     <edge source="243325994" target="2407565892" id="0">
       <data key="d2">96.29762641677289</data>
       <data key="d3">residential</data>
-      <data key="d4">['Theradi Street', 'East Mada Street']</data>
+      <data key="d4">['East Mada Street', 'Theradi Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="243325994" target="2407565892" id="1">
       <data key="d2">97.70344086362354</data>
-      <data key="d3">['living_street', 'residential']</data>
+      <data key="d3">['residential', 'living_street']</data>
       <data key="d4">['சன்னதி தெரு', 'தேரடி தெரு']</data>
       <data key="d5">False</data>
     </edge>
@@ -22353,7 +22353,7 @@
     <edge source="246825428" target="246825431" id="0">
       <data key="d2">191.803496509998</data>
       <data key="d3">tertiary</data>
-      <data key="d4">['PS Kumarasamy Raja Road', 'Greenways Road']</data>
+      <data key="d4">['Greenways Road', 'PS Kumarasamy Raja Road']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="246825431" target="2407564056" id="0">
@@ -22371,7 +22371,7 @@
     <edge source="246825431" target="246825428" id="0">
       <data key="d2">191.803496509998</data>
       <data key="d3">tertiary</data>
-      <data key="d4">['PS Kumarasamy Raja Road', 'Greenways Road']</data>
+      <data key="d4">['Greenways Road', 'PS Kumarasamy Raja Road']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="246825948" target="310503287" id="0">
@@ -24633,7 +24633,7 @@
     <edge source="256039853" target="12159256548" id="0">
       <data key="d2">41.05373495667487</data>
       <data key="d3">primary</data>
-      <data key="d4">['Kathipara Interchange Flyover', 'Grand Southern Trunk Road Flyover']</data>
+      <data key="d4">['Grand Southern Trunk Road Flyover', 'Kathipara Interchange Flyover']</data>
       <data key="d5">True</data>
     </edge>
     <edge source="256119277" target="11038553188" id="0">
@@ -24747,7 +24747,7 @@
     <edge source="257430016" target="312025154" id="0">
       <data key="d2">244.60659371744327</data>
       <data key="d3">residential</data>
-      <data key="d4">['12th Cross Street', 'Indira Nagar 13th Cross Street']</data>
+      <data key="d4">['Indira Nagar 13th Cross Street', '12th Cross Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="257430019" target="310535740" id="0">
@@ -25172,8 +25172,8 @@
     </edge>
     <edge source="257430081" target="319489477" id="0">
       <data key="d2">178.80446426631082</data>
-      <data key="d3">['tertiary', 'residential']</data>
-      <data key="d4">['Indira Nagar 2nd Avenue', '3rd Main Road']</data>
+      <data key="d3">['residential', 'tertiary']</data>
+      <data key="d4">['3rd Main Road', 'Indira Nagar 2nd Avenue']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="257430090" target="360894427" id="0">
@@ -26258,7 +26258,7 @@
     </edge>
     <edge source="257433297" target="313775239" id="0">
       <data key="d2">121.38101774804012</data>
-      <data key="d3">['living_street', 'residential']</data>
+      <data key="d3">['residential', 'living_street']</data>
       <data key="d4">2nd Street</data>
       <data key="d5">False</data>
     </edge>
@@ -26919,7 +26919,7 @@
     <edge source="262680783" target="262680795" id="0">
       <data key="d2">212.4144893500417</data>
       <data key="d3">residential</data>
-      <data key="d4">['North Avenue', 'East Avenue']</data>
+      <data key="d4">['East Avenue', 'North Avenue']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="262680785" target="4324942496" id="0">
@@ -27021,7 +27021,7 @@
     <edge source="262680795" target="262680783" id="0">
       <data key="d2">212.4144893500417</data>
       <data key="d3">residential</data>
-      <data key="d4">['North Avenue', 'East Avenue']</data>
+      <data key="d4">['East Avenue', 'North Avenue']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="262680795" target="262680791" id="0">
@@ -27776,7 +27776,7 @@
     </edge>
     <edge source="264040225" target="264040573" id="0">
       <data key="d2">44.49039750294151</data>
-      <data key="d3">['living_street', 'residential']</data>
+      <data key="d3">['residential', 'living_street']</data>
       <data key="d4">['TP Scheme Road', 'Norton Road']</data>
       <data key="d5">False</data>
     </edge>
@@ -27915,7 +27915,7 @@
     <edge source="264040354" target="359370703" id="0">
       <data key="d2">76.7755149451666</data>
       <data key="d3">residential</data>
-      <data key="d4">['Karpagam Avenue 4th Street', 'Karpagam Avenue 2nd Main Road']</data>
+      <data key="d4">['Karpagam Avenue 2nd Main Road', 'Karpagam Avenue 4th Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="264040355" target="264040354" id="0">
@@ -28142,8 +28142,8 @@
     </edge>
     <edge source="264040568" target="9181606853" id="0">
       <data key="d2">48.66444526684772</data>
-      <data key="d3">['living_street', 'residential']</data>
-      <data key="d4">['Raja Street', 'Velayuda Raja Street']</data>
+      <data key="d3">['residential', 'living_street']</data>
+      <data key="d4">['Velayuda Raja Street', 'Raja Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="264040569" target="9181606856" id="0">
@@ -28214,7 +28214,7 @@
     </edge>
     <edge source="264040573" target="264040225" id="0">
       <data key="d2">44.49039750294151</data>
-      <data key="d3">['living_street', 'residential']</data>
+      <data key="d3">['residential', 'living_street']</data>
       <data key="d4">['TP Scheme Road', 'Norton Road']</data>
       <data key="d5">False</data>
     </edge>
@@ -29871,7 +29871,7 @@
     <edge source="269219787" target="9181580971" id="0">
       <data key="d2">121.1288156579382</data>
       <data key="d3">residential</data>
-      <data key="d4">['3rd Street', '2nd Street']</data>
+      <data key="d4">['2nd Street', '3rd Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="269219794" target="9181580971" id="0">
@@ -30135,7 +30135,7 @@
     <edge source="269766946" target="269767181" id="0">
       <data key="d2">245.5187259385868</data>
       <data key="d3">residential</data>
-      <data key="d4">['South Avenue', 'East Mada Street']</data>
+      <data key="d4">['East Mada Street', 'South Avenue']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="269766946" target="269766796" id="0">
@@ -30429,7 +30429,7 @@
     <edge source="269767181" target="269766946" id="0">
       <data key="d2">245.5187259385868</data>
       <data key="d3">residential</data>
-      <data key="d4">['South Avenue', 'East Mada Street']</data>
+      <data key="d4">['East Mada Street', 'South Avenue']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="269767197" target="2168668834" id="0">
@@ -31377,7 +31377,7 @@
     <edge source="278990629" target="364572470" id="1">
       <data key="d2">224.69861724099985</data>
       <data key="d3">residential</data>
-      <data key="d4">['1st Cross Street', '2nd Cross Street']</data>
+      <data key="d4">['2nd Cross Street', '1st Cross Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="278990629" target="367788946" id="0">
@@ -31683,7 +31683,7 @@
     <edge source="280088653" target="9885084116" id="0">
       <data key="d2">446.3443762962671</data>
       <data key="d3">secondary</data>
-      <data key="d4">['Abraham Bridge', 'Alandur Road']</data>
+      <data key="d4">['Alandur Road', 'Abraham Bridge']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="280088653" target="2241067975" id="0">
@@ -34460,7 +34460,7 @@
     </edge>
     <edge source="299880590" target="2168960212" id="0">
       <data key="d2">243.60727081155312</data>
-      <data key="d3">['living_street', 'residential']</data>
+      <data key="d3">['residential', 'living_street']</data>
       <data key="d6">nan</data>
       <data key="d5">False</data>
     </edge>
@@ -34791,7 +34791,7 @@
     <edge source="299881944" target="11794953392" id="0">
       <data key="d2">220.051081051491</data>
       <data key="d3">residential</data>
-      <data key="d4">['Andal Nagar Extension 2nd Street', 'MGR Nagar 5th Main Road']</data>
+      <data key="d4">['MGR Nagar 5th Main Road', 'Andal Nagar Extension 2nd Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="299881944" target="6307239350" id="0">
@@ -35247,7 +35247,7 @@
     <edge source="299883747" target="7016048930" id="0">
       <data key="d2">182.23934660420065</data>
       <data key="d3">residential</data>
-      <data key="d4">['Sri Devi Karumari Amman Nagar 1st Street', 'Sri Devi Karumari Amman Nagar Avenue']</data>
+      <data key="d4">['Sri Devi Karumari Amman Nagar Avenue', 'Sri Devi Karumari Amman Nagar 1st Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="299883757" target="338222949" id="0">
@@ -37827,7 +37827,7 @@
     <edge source="300165175" target="11770291534" id="0">
       <data key="d2">78.7473359136126</data>
       <data key="d3">residential</data>
-      <data key="d4">['Netaji Street', '11th Street']</data>
+      <data key="d4">['11th Street', 'Netaji Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="300165208" target="11770291505" id="0">
@@ -37851,7 +37851,7 @@
     <edge source="300165209" target="338406669" id="0">
       <data key="d2">182.9260764201729</data>
       <data key="d3">residential</data>
-      <data key="d4">['Sakthi Vijayalkshmi Road', '2nd Street']</data>
+      <data key="d4">['2nd Street', 'Sakthi Vijayalkshmi Road']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="300165214" target="300306125" id="0">
@@ -38637,7 +38637,7 @@
     <edge source="300192883" target="11770278953" id="0">
       <data key="d2">104.04279847191854</data>
       <data key="d3">residential</data>
-      <data key="d4">['Ezumudaliyar Street', '3rd Main Road']</data>
+      <data key="d4">['3rd Main Road', 'Ezumudaliyar Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="300193025" target="300193133" id="0">
@@ -39543,7 +39543,7 @@
     <edge source="300306222" target="11618372055" id="0">
       <data key="d2">90.1334576601315</data>
       <data key="d3">residential</data>
-      <data key="d4">['9th Street', '11th Street']</data>
+      <data key="d4">['11th Street', '9th Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="300310320" target="325206177" id="0">
@@ -39765,7 +39765,7 @@
     <edge source="300312067" target="330648930" id="0">
       <data key="d2">16.762730483433867</data>
       <data key="d3">residential</data>
-      <data key="d4">['MurphyDoss Street', 'MurphyDoss Street;Way to Gandhi Road / VGP avenue']</data>
+      <data key="d4">['MurphyDoss Street;Way to Gandhi Road / VGP avenue', 'MurphyDoss Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="300312074" target="338223232" id="0">
@@ -40071,7 +40071,7 @@
     <edge source="300312835" target="3426336740" id="0">
       <data key="d2">58.40025183400928</data>
       <data key="d3">residential</data>
-      <data key="d4">['RajaLaxmi Nagar 1st main Road', 'JagannathaPuram 1st Main road']</data>
+      <data key="d4">['JagannathaPuram 1st Main road', 'RajaLaxmi Nagar 1st main Road']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="300312836" target="11770224838" id="0">
@@ -40395,7 +40395,7 @@
     <edge source="300455464" target="338461359" id="0">
       <data key="d2">134.2641913880168</data>
       <data key="d3">residential</data>
-      <data key="d4">['Park Avenue 1st Cross Street', 'Park Avenue 2nd Street']</data>
+      <data key="d4">['Park Avenue 2nd Street', 'Park Avenue 1st Cross Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="300455566" target="300455567" id="0">
@@ -40569,7 +40569,7 @@
     <edge source="300463612" target="338406836" id="0">
       <data key="d2">198.44046497076712</data>
       <data key="d3">residential</data>
-      <data key="d4">['5th Street', '4th Street', 'Astalakshmi Nagar 2nd Street']</data>
+      <data key="d4">['4th Street', '5th Street', 'Astalakshmi Nagar 2nd Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="300463790" target="325208966" id="0">
@@ -40797,7 +40797,7 @@
     <edge source="300463970" target="13793703061" id="0">
       <data key="d2">457.6475386117908</data>
       <data key="d3">residential</data>
-      <data key="d4">['Lake View Road', '7th Street']</data>
+      <data key="d4">['7th Street', 'Lake View Road']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="300464005" target="2167027827" id="0">
@@ -41313,7 +41313,7 @@
     <edge source="300464568" target="11465342524" id="0">
       <data key="d2">250.5114233980573</data>
       <data key="d3">residential</data>
-      <data key="d4">['4th Main Road', 'Venus Colony 1st street']</data>
+      <data key="d4">['Venus Colony 1st street', '4th Main Road']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="300464569" target="300464570" id="0">
@@ -41583,7 +41583,7 @@
     <edge source="300464686" target="1640674290" id="0">
       <data key="d2">165.48521633754288</data>
       <data key="d3">residential</data>
-      <data key="d4">['Gopal Street', 'Vivekananda Street']</data>
+      <data key="d4">['Vivekananda Street', 'Gopal Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="300464731" target="300464732" id="0">
@@ -44847,7 +44847,7 @@
     <edge source="312031567" target="3674410071" id="0">
       <data key="d2">217.8092070930512</data>
       <data key="d3">residential</data>
-      <data key="d4">['7th Main Road', '7th Main Road Kasthuribai Nagar']</data>
+      <data key="d4">['7th Main Road Kasthuribai Nagar', '7th Main Road']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="313138576" target="313138621" id="0">
@@ -45885,7 +45885,7 @@
     <edge source="313775110" target="9179593810" id="0">
       <data key="d2">114.84233698652524</data>
       <data key="d3">residential</data>
-      <data key="d4">['3rd Street', '2nd Street']</data>
+      <data key="d4">['2nd Street', '3rd Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="313775114" target="313775110" id="0">
@@ -45933,7 +45933,7 @@
     <edge source="313775197" target="11046276522" id="0">
       <data key="d2">126.45292509380818</data>
       <data key="d3">residential</data>
-      <data key="d4">['Parameswari Nagar 1st Street', '1st Street']</data>
+      <data key="d4">['1st Street', 'Parameswari Nagar 1st Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="313775201" target="313775205" id="0">
@@ -46112,7 +46112,7 @@
     </edge>
     <edge source="313775239" target="257433297" id="0">
       <data key="d2">121.38101774804014</data>
-      <data key="d3">['living_street', 'residential']</data>
+      <data key="d3">['residential', 'living_street']</data>
       <data key="d4">2nd Street</data>
       <data key="d5">False</data>
     </edge>
@@ -46124,8 +46124,8 @@
     </edge>
     <edge source="313775241" target="313775242" id="0">
       <data key="d2">89.07025029572003</data>
-      <data key="d3">['living_street', 'residential']</data>
-      <data key="d4">['Damodarapuram 3rd Street', '4th Street']</data>
+      <data key="d3">['residential', 'living_street']</data>
+      <data key="d4">['4th Street', 'Damodarapuram 3rd Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="313775241" target="11772701093" id="0">
@@ -46148,7 +46148,7 @@
     </edge>
     <edge source="313775242" target="313775241" id="0">
       <data key="d2">89.07025029572003</data>
-      <data key="d3">['living_street', 'residential']</data>
+      <data key="d3">['residential', 'living_street']</data>
       <data key="d4">['Damodarapuram 3rd Street', '4th Street']</data>
       <data key="d5">False</data>
     </edge>
@@ -46245,7 +46245,7 @@
     <edge source="313775253" target="313775254" id="0">
       <data key="d2">189.93457328539583</data>
       <data key="d3">residential</data>
-      <data key="d4">['3rd Cross Street', '2nd Main Road']</data>
+      <data key="d4">['2nd Main Road', '3rd Cross Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="313775254" target="313775258" id="0">
@@ -47031,7 +47031,7 @@
     <edge source="313783561" target="313783564" id="1">
       <data key="d2">279.316577749692</data>
       <data key="d3">residential</data>
-      <data key="d4">['Shastri Nagar 13th Cross Street', 'Shastri Nagar 14th Cross Street']</data>
+      <data key="d4">['Shastri Nagar 14th Cross Street', 'Shastri Nagar 13th Cross Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="313783561" target="313783546" id="0">
@@ -47055,7 +47055,7 @@
     <edge source="313783564" target="313783561" id="1">
       <data key="d2">279.316577749692</data>
       <data key="d3">residential</data>
-      <data key="d4">['Shastri Nagar 13th Cross Street', 'Shastri Nagar 14th Cross Street']</data>
+      <data key="d4">['Shastri Nagar 14th Cross Street', 'Shastri Nagar 13th Cross Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="313783569" target="313783548" id="0">
@@ -48230,8 +48230,8 @@
     </edge>
     <edge source="319489477" target="257430081" id="0">
       <data key="d2">178.80446426631084</data>
-      <data key="d3">['tertiary', 'residential']</data>
-      <data key="d4">['Indira Nagar 2nd Avenue', '3rd Main Road']</data>
+      <data key="d3">['residential', 'tertiary']</data>
+      <data key="d4">['3rd Main Road', 'Indira Nagar 2nd Avenue']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="319489477" target="319489473" id="0">
@@ -50079,7 +50079,7 @@
     <edge source="319500456" target="319500464" id="0">
       <data key="d2">109.82496556310228</data>
       <data key="d3">residential</data>
-      <data key="d4">['Yamuna Street', 'Raja Raja Cholan Street']</data>
+      <data key="d4">['Raja Raja Cholan Street', 'Yamuna Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="319500457" target="257440279" id="0">
@@ -50859,7 +50859,7 @@
     <edge source="325207251" target="3431404936" id="0">
       <data key="d2">76.71080799746316</data>
       <data key="d3">tertiary</data>
-      <data key="d4">['JagannathaPuram 3rd Main Road', 'RajaLaxmi Nagar 3rd Main Road']</data>
+      <data key="d4">['RajaLaxmi Nagar 3rd Main Road', 'JagannathaPuram 3rd Main Road']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="325207254" target="300312835" id="0">
@@ -50883,7 +50883,7 @@
     <edge source="325207254" target="3426336738" id="0">
       <data key="d2">59.018708991478526</data>
       <data key="d3">residential</data>
-      <data key="d4">['RajaLaxmi Nagar 2nd main Road', 'JagannathaPuram 2nd Main road']</data>
+      <data key="d4">['JagannathaPuram 2nd Main road', 'RajaLaxmi Nagar 2nd main Road']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="325207257" target="4358646185" id="0">
@@ -50997,7 +50997,7 @@
     <edge source="325208583" target="325208596" id="0">
       <data key="d2">117.5578229109467</data>
       <data key="d3">residential</data>
-      <data key="d4">['Dhandeeswaram Nagar 1st Cross Road', 'Dhandeeshwaram Nagar 6th Main Road Avenue']</data>
+      <data key="d4">['Dhandeeshwaram Nagar 6th Main Road Avenue', 'Dhandeeswaram Nagar 1st Cross Road']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="325208583" target="325209570" id="0">
@@ -53127,7 +53127,7 @@
     <edge source="330648927" target="4279691218" id="0">
       <data key="d2">123.00293025906343</data>
       <data key="d3">residential</data>
-      <data key="d4">['Shanti 2n Street', 'Dhandapani Street']</data>
+      <data key="d4">['Dhandapani Street', 'Shanti 2n Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="330648927" target="330648924" id="0">
@@ -53151,7 +53151,7 @@
     <edge source="330648930" target="300312067" id="0">
       <data key="d2">16.762730483433867</data>
       <data key="d3">residential</data>
-      <data key="d4">['MurphyDoss Street', 'MurphyDoss Street;Way to Gandhi Road / VGP avenue']</data>
+      <data key="d4">['MurphyDoss Street;Way to Gandhi Road / VGP avenue', 'MurphyDoss Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="330653119" target="11763071658" id="0">
@@ -53721,7 +53721,7 @@
     <edge source="330780887" target="330780891" id="0">
       <data key="d2">228.6301643950911</data>
       <data key="d3">tertiary</data>
-      <data key="d4">['Thiruvallur Street', 'New Colony 3rd Main Road']</data>
+      <data key="d4">['New Colony 3rd Main Road', 'Thiruvallur Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="330780887" target="4294274247" id="0">
@@ -53739,7 +53739,7 @@
     <edge source="330780891" target="330780887" id="0">
       <data key="d2">228.6301643950911</data>
       <data key="d3">tertiary</data>
-      <data key="d4">['Thiruvallur Street', 'New Colony 3rd Main Road']</data>
+      <data key="d4">['New Colony 3rd Main Road', 'Thiruvallur Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="330780891" target="338466159" id="0">
@@ -53865,7 +53865,7 @@
     <edge source="333719061" target="11495765890" id="0">
       <data key="d2">186.21921294098124</data>
       <data key="d3">secondary</data>
-      <data key="d4">['Lattice Bridge', 'Kalki Krishnamurty Road']</data>
+      <data key="d4">['Kalki Krishnamurty Road', 'Lattice Bridge']</data>
       <data key="d5">True</data>
     </edge>
     <edge source="333719061" target="333719063" id="0">
@@ -55239,7 +55239,7 @@
     <edge source="333738163" target="333738167" id="0">
       <data key="d2">92.22868193164456</data>
       <data key="d3">residential</data>
-      <data key="d4">['30th Street', '29th Street']</data>
+      <data key="d4">['29th Street', '30th Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="333738167" target="333738142" id="0">
@@ -55263,7 +55263,7 @@
     <edge source="333738167" target="333738163" id="0">
       <data key="d2">92.22868193164456</data>
       <data key="d3">residential</data>
-      <data key="d4">['30th Street', '29th Street']</data>
+      <data key="d4">['29th Street', '30th Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="333738175" target="333738191" id="0">
@@ -55353,7 +55353,7 @@
     <edge source="333743771" target="333743855" id="0">
       <data key="d2">85.17611054464055</data>
       <data key="d3">residential</data>
-      <data key="d4">['1st Main Road', '6th Street']</data>
+      <data key="d4">['6th Street', '1st Main Road']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="333743777" target="9179560428" id="0">
@@ -55419,7 +55419,7 @@
     <edge source="333743805" target="333743840" id="0">
       <data key="d2">87.83375802158031</data>
       <data key="d3">residential</data>
-      <data key="d4">['3rd Street', '2nd Street']</data>
+      <data key="d4">['2nd Street', '3rd Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="333743805" target="333743777" id="0">
@@ -55443,7 +55443,7 @@
     <edge source="333743840" target="333743805" id="0">
       <data key="d2">87.83375802158031</data>
       <data key="d3">residential</data>
-      <data key="d4">['3rd Street', '2nd Street']</data>
+      <data key="d4">['2nd Street', '3rd Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="333743855" target="333743796" id="0">
@@ -55461,7 +55461,7 @@
     <edge source="333743855" target="333743771" id="0">
       <data key="d2">85.17611054464055</data>
       <data key="d3">residential</data>
-      <data key="d4">['1st Main Road', '6th Street']</data>
+      <data key="d4">['6th Street', '1st Main Road']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="333743882" target="279610136" id="0">
@@ -56199,13 +56199,13 @@
     <edge source="334176853" target="334176840" id="0">
       <data key="d2">82.44810790766498</data>
       <data key="d3">residential</data>
-      <data key="d4">['23rd Street', '20th Street']</data>
+      <data key="d4">['20th Street', '23rd Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="334176853" target="334176840" id="1">
       <data key="d2">81.86664697704599</data>
       <data key="d3">residential</data>
-      <data key="d4">['22nd Street', '21st Street']</data>
+      <data key="d4">['21st Street', '22nd Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="334176857" target="334176861" id="0">
@@ -56265,7 +56265,7 @@
     <edge source="334176867" target="334176877" id="0">
       <data key="d2">155.35004993018018</data>
       <data key="d3">residential</data>
-      <data key="d4">['8th Street', '7th Street']</data>
+      <data key="d4">['7th Street', '8th Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="334176877" target="333743785" id="0">
@@ -56283,7 +56283,7 @@
     <edge source="334176877" target="334176867" id="0">
       <data key="d2">155.35004993018018</data>
       <data key="d3">residential</data>
-      <data key="d4">['8th Street', '7th Street']</data>
+      <data key="d4">['7th Street', '8th Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="334176882" target="279610139" id="0">
@@ -56325,7 +56325,7 @@
     <edge source="334189916" target="334189953" id="0">
       <data key="d2">159.2023089417939</data>
       <data key="d3">residential</data>
-      <data key="d4">['4th Cross Street', '3rd Main Road']</data>
+      <data key="d4">['3rd Main Road', '4th Cross Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="334189924" target="334190021" id="0">
@@ -58647,7 +58647,7 @@
     <edge source="338223254" target="4252220060" id="0">
       <data key="d2">38.83118842114864</data>
       <data key="d3">residential</data>
-      <data key="d4">['Street in Tansi Nagar (anna nagar) Velachery', 'Venus Colony 2nd Street']</data>
+      <data key="d4">['Venus Colony 2nd Street', 'Street in Tansi Nagar (anna nagar) Velachery']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="338223258" target="299879312" id="0">
@@ -58899,7 +58899,7 @@
     <edge source="338406416" target="1457503207" id="0">
       <data key="d2">150.18131626063712</data>
       <data key="d3">residential</data>
-      <data key="d4">['Chandru Street', '3rd Main Road']</data>
+      <data key="d4">['3rd Main Road', 'Chandru Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="338406416" target="299879272" id="0">
@@ -59043,7 +59043,7 @@
     <edge source="338406549" target="4294218142" id="0">
       <data key="d2">53.75221043778939</data>
       <data key="d3">residential</data>
-      <data key="d4">['Sarathy Nagar 1st Main Road', 'Sarathy Nagar 6th street']</data>
+      <data key="d4">['Sarathy Nagar 6th street', 'Sarathy Nagar 1st Main Road']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="338406554" target="338406562" id="0">
@@ -59277,7 +59277,7 @@
     <edge source="338406836" target="300463612" id="0">
       <data key="d2">198.44046497076707</data>
       <data key="d3">residential</data>
-      <data key="d4">['5th Street', '4th Street', 'Astalakshmi Nagar 2nd Street']</data>
+      <data key="d4">['4th Street', '5th Street', 'Astalakshmi Nagar 2nd Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="338406836" target="2407565222" id="0">
@@ -60411,7 +60411,7 @@
     <edge source="338461359" target="300455464" id="0">
       <data key="d2">134.2641913880168</data>
       <data key="d3">residential</data>
-      <data key="d4">['Park Avenue 1st Cross Street', 'Park Avenue 2nd Street']</data>
+      <data key="d4">['Park Avenue 2nd Street', 'Park Avenue 1st Cross Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="338461377" target="338461394" id="0">
@@ -64635,7 +64635,7 @@
     <edge source="364572470" target="278990629" id="1">
       <data key="d2">224.6986172409998</data>
       <data key="d3">residential</data>
-      <data key="d4">['1st Cross Street', '2nd Cross Street']</data>
+      <data key="d4">['2nd Cross Street', '1st Cross Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="364584847" target="364168481" id="0">
@@ -65108,7 +65108,7 @@
     </edge>
     <edge source="364628475" target="364637103" id="0">
       <data key="d2">44.07575964871165</data>
-      <data key="d3">['living_street', 'residential']</data>
+      <data key="d3">['residential', 'living_street']</data>
       <data key="d4">Aovaiyaar Street</data>
       <data key="d5">False</data>
     </edge>
@@ -65894,7 +65894,7 @@
     </edge>
     <edge source="364637083" target="11056205439" id="0">
       <data key="d2">104.26927674888194</data>
-      <data key="d3">['living_street', 'residential']</data>
+      <data key="d3">['residential', 'living_street']</data>
       <data key="d6">nan</data>
       <data key="d5">False</data>
     </edge>
@@ -66116,7 +66116,7 @@
     </edge>
     <edge source="364637103" target="364628475" id="0">
       <data key="d2">44.07575964871165</data>
-      <data key="d3">['living_street', 'residential']</data>
+      <data key="d3">['residential', 'living_street']</data>
       <data key="d4">Aovaiyaar Street</data>
       <data key="d5">False</data>
     </edge>
@@ -66932,7 +66932,7 @@
     </edge>
     <edge source="366081899" target="7826160049" id="0">
       <data key="d2">78.64803613721054</data>
-      <data key="d3">['living_street', 'residential']</data>
+      <data key="d3">['residential', 'living_street']</data>
       <data key="d4">Nehru Nagar 2nd Main Road</data>
       <data key="d5">False</data>
     </edge>
@@ -67203,7 +67203,7 @@
     <edge source="366088050" target="364585941" id="0">
       <data key="d2">182.6385387533997</data>
       <data key="d3">residential</data>
-      <data key="d4">['1st Cross Street', '3rd Avenue']</data>
+      <data key="d4">['3rd Avenue', '1st Cross Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="366088051" target="366088050" id="0">
@@ -68186,7 +68186,7 @@
     </edge>
     <edge source="391847437" target="391847440" id="0">
       <data key="d2">66.75567643312581</data>
-      <data key="d3">['living_street', 'residential']</data>
+      <data key="d3">['residential', 'living_street']</data>
       <data key="d6">nan</data>
       <data key="d5">False</data>
     </edge>
@@ -68204,7 +68204,7 @@
     </edge>
     <edge source="391847440" target="391847437" id="0">
       <data key="d2">66.75567643312581</data>
-      <data key="d3">['living_street', 'residential']</data>
+      <data key="d3">['residential', 'living_street']</data>
       <data key="d6">nan</data>
       <data key="d5">False</data>
     </edge>
@@ -68319,7 +68319,7 @@
     <edge source="416838241" target="257439202" id="0">
       <data key="d2">195.75362420455244</data>
       <data key="d3">secondary</data>
-      <data key="d4">['Lattice Bridge', 'Kalki Krishnamurty Road']</data>
+      <data key="d4">['Kalki Krishnamurty Road', 'Lattice Bridge']</data>
       <data key="d5">True</data>
     </edge>
     <edge source="416849807" target="11591482680" id="0">
@@ -69117,7 +69117,7 @@
     <edge source="1457503207" target="338406416" id="0">
       <data key="d2">150.18131626063712</data>
       <data key="d3">residential</data>
-      <data key="d4">['Chandru Street', '3rd Main Road']</data>
+      <data key="d4">['3rd Main Road', 'Chandru Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="1457503208" target="338406416" id="0">
@@ -69693,7 +69693,7 @@
     <edge source="1457503516" target="1457503510" id="0">
       <data key="d2">195.84866385147149</data>
       <data key="d3">residential</data>
-      <data key="d4">['Balaji Street', 'Baby Nagar 2nd Cross Road']</data>
+      <data key="d4">['Baby Nagar 2nd Cross Road', 'Balaji Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="1457503518" target="1457503509" id="0">
@@ -69891,7 +69891,7 @@
     <edge source="1640674290" target="300464686" id="0">
       <data key="d2">165.48521633754288</data>
       <data key="d3">residential</data>
-      <data key="d4">['Gopal Street', 'Vivekananda Street']</data>
+      <data key="d4">['Vivekananda Street', 'Gopal Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="1640675574" target="1641560827" id="0">
@@ -71931,7 +71931,7 @@
     <edge source="2167054629" target="319494440" id="0">
       <data key="d2">101.3613091044954</data>
       <data key="d3">residential</data>
-      <data key="d4">['Sivasundar 2nd Avenue', '1st East Street']</data>
+      <data key="d4">['1st East Street', 'Sivasundar 2nd Avenue']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="2167054629" target="257432754" id="0">
@@ -72908,7 +72908,7 @@
     </edge>
     <edge source="2168591066" target="11431797653" id="0">
       <data key="d2">41.55905103929718</data>
-      <data key="d3">['living_street', 'residential']</data>
+      <data key="d3">['residential', 'living_street']</data>
       <data key="d4">Ambika Cross Street</data>
       <data key="d5">False</data>
     </edge>
@@ -73916,7 +73916,7 @@
     </edge>
     <edge source="2168960212" target="299880590" id="0">
       <data key="d2">243.60727081155312</data>
-      <data key="d3">['living_street', 'residential']</data>
+      <data key="d3">['residential', 'living_street']</data>
       <data key="d6">nan</data>
       <data key="d5">False</data>
     </edge>
@@ -74709,7 +74709,7 @@
     <edge source="2212827590" target="11648725762" id="0">
       <data key="d2">618.4652040381677</data>
       <data key="d3">residential</data>
-      <data key="d4">['4th Main Road Ext', 'River View Road']</data>
+      <data key="d4">['River View Road', '4th Main Road Ext']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="2215260201" target="2215260219" id="0">
@@ -75068,7 +75068,7 @@
     </edge>
     <edge source="2215260371" target="9853373945" id="0">
       <data key="d2">45.2180898646893</data>
-      <data key="d3">['tertiary', 'residential']</data>
+      <data key="d3">['residential', 'tertiary']</data>
       <data key="d4">['Janaki Avenue', 'Satyadev Avenue']</data>
       <data key="d5">False</data>
     </edge>
@@ -75213,7 +75213,7 @@
     <edge source="2218345819" target="269219500" id="0">
       <data key="d2">187.73650076299649</data>
       <data key="d3">tertiary</data>
-      <data key="d4">['Canal Bank Road', 'East Kottur Canal Bank Road']</data>
+      <data key="d4">['East Kottur Canal Bank Road', 'Canal Bank Road']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="2218345819" target="249497874" id="0">
@@ -75638,7 +75638,7 @@
     </edge>
     <edge source="2237675523" target="9885084116" id="0">
       <data key="d2">97.9747778050609</data>
-      <data key="d3">['living_street', 'residential']</data>
+      <data key="d3">['residential', 'living_street']</data>
       <data key="d6">nan</data>
       <data key="d5">False</data>
     </edge>
@@ -76712,7 +76712,7 @@
     </edge>
     <edge source="2241068112" target="6783512455" id="0">
       <data key="d2">181.46372181856813</data>
-      <data key="d3">['living_street', 'residential']</data>
+      <data key="d3">['residential', 'living_street']</data>
       <data key="d4">Nagi Reddy thottam Garden Rd</data>
       <data key="d5">False</data>
     </edge>
@@ -77715,12 +77715,12 @@
     <edge source="2407565892" target="243325994" id="0">
       <data key="d2">96.29762641677289</data>
       <data key="d3">residential</data>
-      <data key="d4">['Theradi Street', 'East Mada Street']</data>
+      <data key="d4">['East Mada Street', 'Theradi Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="2407565892" target="243325994" id="1">
       <data key="d2">97.70344086362353</data>
-      <data key="d3">['living_street', 'residential']</data>
+      <data key="d3">['residential', 'living_street']</data>
       <data key="d4">['சன்னதி தெரு', 'தேரடி தெரு']</data>
       <data key="d5">False</data>
     </edge>
@@ -78117,7 +78117,7 @@
     <edge source="3426336738" target="325207254" id="0">
       <data key="d2">59.018708991478526</data>
       <data key="d3">residential</data>
-      <data key="d4">['RajaLaxmi Nagar 2nd main Road', 'JagannathaPuram 2nd Main road']</data>
+      <data key="d4">['JagannathaPuram 2nd Main road', 'RajaLaxmi Nagar 2nd main Road']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="3426336740" target="3426336738" id="0">
@@ -78129,7 +78129,7 @@
     <edge source="3426336740" target="300312835" id="0">
       <data key="d2">58.40025183400928</data>
       <data key="d3">residential</data>
-      <data key="d4">['RajaLaxmi Nagar 1st main Road', 'JagannathaPuram 1st Main road']</data>
+      <data key="d4">['JagannathaPuram 1st Main road', 'RajaLaxmi Nagar 1st main Road']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="3426336740" target="300312864" id="0">
@@ -78195,7 +78195,7 @@
     <edge source="3431404936" target="325207251" id="0">
       <data key="d2">76.71080799746316</data>
       <data key="d3">tertiary</data>
-      <data key="d4">['JagannathaPuram 3rd Main Road', 'RajaLaxmi Nagar 3rd Main Road']</data>
+      <data key="d4">['RajaLaxmi Nagar 3rd Main Road', 'JagannathaPuram 3rd Main Road']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="3493019110" target="300463949" id="0">
@@ -78387,7 +78387,7 @@
     <edge source="3674410071" target="312031567" id="0">
       <data key="d2">217.8092070930512</data>
       <data key="d3">residential</data>
-      <data key="d4">['7th Main Road', '7th Main Road Kasthuribai Nagar']</data>
+      <data key="d4">['7th Main Road Kasthuribai Nagar', '7th Main Road']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="3674466519" target="338223175" id="0">
@@ -78543,7 +78543,7 @@
     <edge source="3900810109" target="5280203475" id="0">
       <data key="d2">291.45841134783586</data>
       <data key="d3">residential</data>
-      <data key="d4">['Sivagamipuram 1st Street', 'TM Maistry Street Extension']</data>
+      <data key="d4">['TM Maistry Street Extension', 'Sivagamipuram 1st Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="3997983572" target="11045842025" id="0">
@@ -78819,7 +78819,7 @@
     <edge source="4252220060" target="338223254" id="0">
       <data key="d2">38.83118842114864</data>
       <data key="d3">residential</data>
-      <data key="d4">['Street in Tansi Nagar (anna nagar) Velachery', 'Venus Colony 2nd Street']</data>
+      <data key="d4">['Venus Colony 2nd Street', 'Street in Tansi Nagar (anna nagar) Velachery']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="4265546764" target="338417906" id="0">
@@ -79305,7 +79305,7 @@
     <edge source="4279691218" target="330648927" id="0">
       <data key="d2">123.00293025906343</data>
       <data key="d3">residential</data>
-      <data key="d4">['Dhandapani Street', 'Shanti 2n Street']</data>
+      <data key="d4">['Shanti 2n Street', 'Dhandapani Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="4279691218" target="4279691216" id="0">
@@ -79329,7 +79329,7 @@
     <edge source="4294218142" target="338406549" id="0">
       <data key="d2">53.752210437789394</data>
       <data key="d3">residential</data>
-      <data key="d4">['Sarathy Nagar 1st Main Road', 'Sarathy Nagar 6th street']</data>
+      <data key="d4">['Sarathy Nagar 6th street', 'Sarathy Nagar 1st Main Road']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="4294218143" target="338406549" id="0">
@@ -80337,7 +80337,7 @@
     <edge source="5280203475" target="3900810109" id="0">
       <data key="d2">291.45841134783586</data>
       <data key="d3">residential</data>
-      <data key="d4">['Sivagamipuram 1st Street', 'TM Maistry Street Extension']</data>
+      <data key="d4">['TM Maistry Street Extension', 'Sivagamipuram 1st Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="5280203477" target="5280203475" id="0">
@@ -80361,7 +80361,7 @@
     <edge source="5355073730" target="4239226796" id="0">
       <data key="d2">219.88388134102</data>
       <data key="d3">tertiary</data>
-      <data key="d4">['Annai Indhra Gandhi Road', 'Perungudi Station Road']</data>
+      <data key="d4">['Perungudi Station Road', 'Annai Indhra Gandhi Road']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="5355073731" target="5355073730" id="0">
@@ -82616,7 +82616,7 @@
     </edge>
     <edge source="6783512455" target="2241068112" id="0">
       <data key="d2">181.46372181856813</data>
-      <data key="d3">['living_street', 'residential']</data>
+      <data key="d3">['residential', 'living_street']</data>
       <data key="d4">Nagi Reddy thottam Garden Rd</data>
       <data key="d5">False</data>
     </edge>
@@ -83145,7 +83145,7 @@
     <edge source="7016048930" target="299883747" id="0">
       <data key="d2">182.23934660420065</data>
       <data key="d3">residential</data>
-      <data key="d4">['Sri Devi Karumari Amman Nagar 1st Street', 'Sri Devi Karumari Amman Nagar Avenue']</data>
+      <data key="d4">['Sri Devi Karumari Amman Nagar Avenue', 'Sri Devi Karumari Amman Nagar 1st Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="7018303439" target="364628480" id="0">
@@ -84003,7 +84003,7 @@
     <edge source="7825577543" target="2168960231" id="0">
       <data key="d2">77.20185031698433</data>
       <data key="d3">tertiary</data>
-      <data key="d4">['Nethaji Road', 'Pillayar koil street']</data>
+      <data key="d4">['Pillayar koil street', 'Nethaji Road']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="7825577543" target="2168960212" id="0">
@@ -84092,7 +84092,7 @@
     </edge>
     <edge source="7826160049" target="366081899" id="0">
       <data key="d2">78.64803613721054</data>
-      <data key="d3">['living_street', 'residential']</data>
+      <data key="d3">['residential', 'living_street']</data>
       <data key="d4">Nehru Nagar 2nd Main Road</data>
       <data key="d5">False</data>
     </edge>
@@ -84921,7 +84921,7 @@
     <edge source="9179593810" target="313775110" id="0">
       <data key="d2">114.84233698652524</data>
       <data key="d3">residential</data>
-      <data key="d4">['3rd Street', '2nd Street']</data>
+      <data key="d4">['2nd Street', '3rd Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="9179593810" target="9179593807" id="0">
@@ -85611,7 +85611,7 @@
     <edge source="9181580971" target="269219787" id="0">
       <data key="d2">121.12881565793822</data>
       <data key="d3">residential</data>
-      <data key="d4">['3rd Street', '2nd Street']</data>
+      <data key="d4">['2nd Street', '3rd Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="9181580980" target="9181580982" id="0">
@@ -85646,8 +85646,8 @@
     </edge>
     <edge source="9181606853" target="264040568" id="0">
       <data key="d2">48.66444526684772</data>
-      <data key="d3">['living_street', 'residential']</data>
-      <data key="d4">['Raja Street', 'Velayuda Raja Street']</data>
+      <data key="d3">['residential', 'living_street']</data>
+      <data key="d4">['Velayuda Raja Street', 'Raja Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="9181606854" target="2216290034" id="0">
@@ -86540,7 +86540,7 @@
     </edge>
     <edge source="9853373945" target="2215260371" id="0">
       <data key="d2">45.21808986468931</data>
-      <data key="d3">['tertiary', 'residential']</data>
+      <data key="d3">['residential', 'tertiary']</data>
       <data key="d4">['Janaki Avenue', 'Satyadev Avenue']</data>
       <data key="d5">False</data>
     </edge>
@@ -86594,14 +86594,14 @@
     </edge>
     <edge source="9885084116" target="2237675523" id="0">
       <data key="d2">97.9747778050609</data>
-      <data key="d3">['living_street', 'residential']</data>
+      <data key="d3">['residential', 'living_street']</data>
       <data key="d6">nan</data>
       <data key="d5">False</data>
     </edge>
     <edge source="9885084116" target="280088653" id="0">
       <data key="d2">446.3443762962673</data>
       <data key="d3">secondary</data>
-      <data key="d4">['Abraham Bridge', 'Alandur Road']</data>
+      <data key="d4">['Alandur Road', 'Abraham Bridge']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="9885596554" target="5528559498" id="0">
@@ -86739,7 +86739,7 @@
     <edge source="10120161726" target="243326004" id="0">
       <data key="d2">94.93038659553667</data>
       <data key="d3">primary</data>
-      <data key="d4">['Major Mukund Varadharajan Salai', 'Taramani Road']</data>
+      <data key="d4">['Taramani Road', 'Major Mukund Varadharajan Salai']</data>
       <data key="d5">True</data>
     </edge>
     <edge source="10120161792" target="1457503503" id="0">
@@ -88190,7 +88190,7 @@
     </edge>
     <edge source="10567938677" target="10567938678" id="1">
       <data key="d2">219.1140116850312</data>
-      <data key="d3">['tertiary', 'living_street']</data>
+      <data key="d3">['living_street', 'tertiary']</data>
       <data key="d4">5th Avenue</data>
       <data key="d5">False</data>
     </edge>
@@ -90033,7 +90033,7 @@
     <edge source="11046276522" target="313775197" id="0">
       <data key="d2">126.4529250938082</data>
       <data key="d3">residential</data>
-      <data key="d4">['Parameswari Nagar 1st Street', '1st Street']</data>
+      <data key="d4">['1st Street', 'Parameswari Nagar 1st Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="11046276523" target="11046276522" id="0">
@@ -90890,7 +90890,7 @@
     </edge>
     <edge source="11056205439" target="364637083" id="0">
       <data key="d2">104.26927674888194</data>
-      <data key="d3">['living_street', 'residential']</data>
+      <data key="d3">['residential', 'living_street']</data>
       <data key="d6">nan</data>
       <data key="d5">False</data>
     </edge>
@@ -93620,7 +93620,7 @@
     </edge>
     <edge source="11431797653" target="2168591066" id="0">
       <data key="d2">41.55905103929718</data>
-      <data key="d3">['living_street', 'residential']</data>
+      <data key="d3">['residential', 'living_street']</data>
       <data key="d4">Ambika Cross Street</data>
       <data key="d5">False</data>
     </edge>
@@ -93819,7 +93819,7 @@
     <edge source="11465342524" target="300464568" id="0">
       <data key="d2">250.51142339805733</data>
       <data key="d3">residential</data>
-      <data key="d4">['4th Main Road', 'Venus Colony 1st street']</data>
+      <data key="d4">['Venus Colony 1st street', '4th Main Road']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="11465342524" target="5124315541" id="0">
@@ -94935,7 +94935,7 @@
     <edge source="11618372055" target="300306222" id="0">
       <data key="d2">90.1334576601315</data>
       <data key="d3">residential</data>
-      <data key="d4">['9th Street', '11th Street']</data>
+      <data key="d4">['11th Street', '9th Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="11618372056" target="11618372055" id="0">
@@ -95823,7 +95823,7 @@
     <edge source="11648725762" target="2212827590" id="0">
       <data key="d2">618.4652040381679</data>
       <data key="d3">residential</data>
-      <data key="d4">['4th Main Road Ext', 'River View Road']</data>
+      <data key="d4">['River View Road', '4th Main Road Ext']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="11648725767" target="11648725762" id="0">
@@ -95871,7 +95871,7 @@
     <edge source="11648748804" target="11777104051" id="0">
       <data key="d2">141.06325075750965</data>
       <data key="d3">residential</data>
-      <data key="d4">['Pondicherry Road', 'Lock Street']</data>
+      <data key="d4">['Lock Street', 'Pondicherry Road']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="11648748804" target="11648748802" id="0">
@@ -97131,7 +97131,7 @@
     <edge source="11770278953" target="300192883" id="0">
       <data key="d2">104.04279847191852</data>
       <data key="d3">residential</data>
-      <data key="d4">['Ezumudaliyar Street', '3rd Main Road']</data>
+      <data key="d4">['3rd Main Road', 'Ezumudaliyar Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="11770278954" target="11770278953" id="0">
@@ -97269,7 +97269,7 @@
     <edge source="11770291534" target="300165175" id="0">
       <data key="d2">78.7473359136126</data>
       <data key="d3">residential</data>
-      <data key="d4">['Netaji Street', '11th Street']</data>
+      <data key="d4">['11th Street', 'Netaji Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="11770291534" target="11618372055" id="0">
@@ -97725,7 +97725,7 @@
     <edge source="11770790450" target="10228331250" id="0">
       <data key="d2">97.90550843595732</data>
       <data key="d3">residential</data>
-      <data key="d4">['6th Main Road', 'Dhanalakshmi Avenue']</data>
+      <data key="d4">['Dhanalakshmi Avenue', '6th Main Road']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="11770790452" target="3674410071" id="0">
@@ -99555,7 +99555,7 @@
     <edge source="11794953392" target="299881944" id="0">
       <data key="d2">220.051081051491</data>
       <data key="d3">residential</data>
-      <data key="d4">['Andal Nagar Extension 2nd Street', 'MGR Nagar 5th Main Road']</data>
+      <data key="d4">['MGR Nagar 5th Main Road', 'Andal Nagar Extension 2nd Street']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="11794957072" target="11794957073" id="0">
@@ -100701,7 +100701,7 @@
     <edge source="12157405822" target="10282022435" id="0">
       <data key="d2">77.77442957904834</data>
       <data key="d3">primary</data>
-      <data key="d4">['Thiruvalluvar Road', 'West Avenue Road']</data>
+      <data key="d4">['West Avenue Road', 'Thiruvalluvar Road']</data>
       <data key="d5">True</data>
     </edge>
     <edge source="12157405823" target="12157405824" id="0">
@@ -102177,7 +102177,7 @@
     <edge source="13793703061" target="300463970" id="0">
       <data key="d2">457.6475386117908</data>
       <data key="d3">residential</data>
-      <data key="d4">['Lake View Road', '7th Street']</data>
+      <data key="d4">['7th Street', 'Lake View Road']</data>
       <data key="d5">False</data>
     </edge>
     <edge source="13807766819" target="3216996445" id="0">
