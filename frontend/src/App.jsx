@@ -52,7 +52,10 @@ function App() {
       </header>
 
       <div className="map-container">
-        <MapView route={currentRoute} />
+        <MapView
+          route={currentRoute}
+          traffic={traffic}
+        />
       </div>
 
       <RouteInfo

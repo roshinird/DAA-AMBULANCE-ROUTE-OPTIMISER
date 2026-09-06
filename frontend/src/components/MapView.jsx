@@ -16,9 +16,17 @@ const hospitalIcon = L.divIcon({
   iconAnchor: [20, 20],
 })
 
-function MapView({ route }) {
+function MapView({ route, traffic }) {
   const ambulancePosition = routeData.ambulance.position
   const hospitalPosition = routeData.hospital.position
+
+  const trafficColors = {
+    Low: 'green',
+    Moderate: 'orange',
+    Heavy: 'red',
+  }
+
+  const routeColor = trafficColors[traffic] || 'red'
 
   return (
     <MapContainer
@@ -44,7 +52,7 @@ function MapView({ route }) {
       <Polyline
         positions={route}
         pathOptions={{
-          color: 'red',
+          color: routeColor,
           weight: 6,
         }}
       />
