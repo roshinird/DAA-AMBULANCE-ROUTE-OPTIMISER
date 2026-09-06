@@ -1,3 +1,5 @@
+import { routeData } from '../data'
+
 function RouteInfo() {
   return (
     <div className="route-info">
@@ -5,21 +7,21 @@ function RouteInfo() {
 
       <div className="info-item">
         <strong>Distance</strong>
-        <span>6.8 km</span>
+        <span>{routeData.distance}</span>
       </div>
 
       <div className="info-item">
         <strong>ETA</strong>
-        <span>14 min</span>
+        <span>{routeData.eta}</span>
       </div>
 
       <div className="info-item">
         <strong>Traffic</strong>
-        <span>Moderate</span>
+        <span>{routeData.traffic}</span>
       </div>
 
       <div className="status">
-        🟢 Route Active
+        🟢 {routeData.status}
       </div>
     </div>
   )

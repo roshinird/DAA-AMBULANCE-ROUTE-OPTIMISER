@@ -6,6 +6,7 @@ import {
   Polyline,
   Popup,
 } from 'react-leaflet'
+import { routeData } from '../data'
 
 const ambulanceIcon = L.divIcon({
   className: 'custom-marker',
@@ -22,16 +23,9 @@ const hospitalIcon = L.divIcon({
 })
 
 function MapView() {
-  const ambulancePosition = [13.0827, 80.2707]
-  const hospitalPosition = [13.0674, 80.2376]
-
-  const route = [
-    [13.0827, 80.2707],
-    [13.0785, 80.2640],
-    [13.0740, 80.2570],
-    [13.0700, 80.2490],
-    [13.0674, 80.2376],
-  ]
+  const ambulancePosition = routeData.ambulance.position
+  const hospitalPosition = routeData.hospital.position
+  const route = routeData.route
 
   return (
     <MapContainer
