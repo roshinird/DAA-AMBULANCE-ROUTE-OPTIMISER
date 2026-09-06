@@ -67,3 +67,29 @@ body,
   border-radius: 8px;
   background: #e8f5e9;
 }
+.app-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 14px 24px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.app-header p {
+  margin: 4px 0 0;
+  font-size: 13px;
+}
+.leaflet-control-zoom {
+  margin-top: 80px !important;
+}
+
+
