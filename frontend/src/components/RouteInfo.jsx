@@ -1,6 +1,14 @@
 import { routeData } from '../data'
 
 function RouteInfo() {
+  const handleStartRoute = () => {
+    alert('🚑 Route started!')
+  }
+
+  const handleReroute = () => {
+    alert('🔄 Rerouting...')
+  }
+
   return (
     <div className="route-info">
       <h2>🚑 Route Details</h2>
@@ -23,8 +31,19 @@ function RouteInfo() {
       <div className="status">
         🟢 {routeData.status}
       </div>
+
+      <div className="route-buttons">
+        <button onClick={handleStartRoute}>
+          🚑 Start Route
+        </button>
+
+        <button onClick={handleReroute}>
+          🔄 Reroute
+        </button>
+      </div>
     </div>
   )
 }
 
 export default RouteInfo
+

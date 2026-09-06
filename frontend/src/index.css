@@ -108,3 +108,23 @@ body,
 .leaflet-control-zoom {
   margin-top: 80px !important;
 }
+.route-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.route-buttons button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.route-buttons button:hover {
+  opacity: 0.85;
+}
+
