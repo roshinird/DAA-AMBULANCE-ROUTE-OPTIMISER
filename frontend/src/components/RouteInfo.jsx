@@ -1,8 +1,11 @@
+import { useState } from 'react'
 import { routeData } from '../data'
 
 function RouteInfo() {
+  const [routeStarted, setRouteStarted] = useState(false)
+
   const handleStartRoute = () => {
-    alert('🚑 Route started!')
+    setRouteStarted(true)
   }
 
   const handleReroute = () => {
@@ -29,7 +32,7 @@ function RouteInfo() {
       </div>
 
       <div className="status">
-        🟢 {routeData.status}
+        {routeStarted ? '🚑 Route Started' : `🟢 ${routeData.status}`}
       </div>
 
       <div className="route-buttons">
@@ -46,4 +49,5 @@ function RouteInfo() {
 }
 
 export default RouteInfo
+
 
