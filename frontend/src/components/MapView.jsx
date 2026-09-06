@@ -56,6 +56,25 @@ function MapView({ route, traffic }) {
           weight: 6,
         }}
       />
+
+      <div className="traffic-legend">
+        <h3>🚦 Traffic</h3>
+
+        <div>
+          <span className="legend-line low"></span>
+          Low
+        </div>
+
+        <div>
+          <span className="legend-line moderate"></span>
+          Moderate
+        </div>
+
+        <div>
+          <span className="legend-line heavy"></span>
+          Heavy
+        </div>
+      </div>
     </MapContainer>
   )
 }
