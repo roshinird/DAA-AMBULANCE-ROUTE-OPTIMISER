@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react'
 import { routeData } from '../data'
 
-function RouteInfo({ onReroute }) {
+function RouteInfo({
+  traffic,
+  eta,
+  rerouting,
+  onTrafficChange,
+  onReroute,
+}) {
   const [routeStarted, setRouteStarted] = useState(false)
-  const [rerouting, setRerouting] = useState(false)
-  const [traffic, setTraffic] = useState(routeData.traffic)
-  const [eta, setEta] = useState(routeData.eta)
 
   useEffect(() => {
     const trafficLevels = [
@@ -19,27 +22,20 @@ function RouteInfo({ onReroute }) {
     const trafficTimer = setInterval(() => {
       const currentTraffic = trafficLevels[index]
 
-      setTraffic(currentTraffic.name)
-      setEta(currentTraffic.eta)
+      onTrafficChange(currentTraffic.name, currentTraffic.eta)
 
       index = (index + 1) % trafficLevels.length
     }, 5000)
 
     return () => clearInterval(trafficTimer)
-  }, [])
+  }, [onTrafficChange])
 
   const handleStartRoute = () => {
     setRouteStarted(true)
   }
 
   const handleReroute = () => {
-    setRerouting(true)
-
-    setTimeout(() => {
-      onReroute()
-      setRerouting(false)
-      alert('✅ New route calculated!')
-    }, 1000)
+    onReroute()
   }
 
   return (
