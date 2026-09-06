@@ -1,7 +1,25 @@
+import { useState } from 'react'
 import MapView from './components/MapView'
 import RouteInfo from './components/RouteInfo'
+import { routeData } from './data'
 
 function App() {
+  const [currentRoute, setCurrentRoute] = useState(routeData.route)
+
+  const handleReroute = () => {
+    // Temporary alternative route for frontend testing
+    const alternativeRoute = [
+      [13.0827, 80.2707],
+      [13.0795, 80.2670],
+      [13.0760, 80.2600],
+      [13.0715, 80.2520],
+      [13.0685, 80.2440],
+      [13.0674, 80.2376],
+    ]
+
+    setCurrentRoute(alternativeRoute)
+  }
+
   return (
     <div className="app">
       <header className="app-header">
@@ -12,10 +30,10 @@ function App() {
       </header>
 
       <div className="map-container">
-        <MapView />
+        <MapView route={currentRoute} />
       </div>
 
-      <RouteInfo />
+      <RouteInfo onReroute={handleReroute} />
     </div>
   )
 }

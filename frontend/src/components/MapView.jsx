@@ -1,11 +1,5 @@
 import L from 'leaflet'
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  Polyline,
-  Popup,
-} from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Polyline } from 'react-leaflet'
 import { routeData } from '../data'
 
 const ambulanceIcon = L.divIcon({
@@ -22,14 +16,13 @@ const hospitalIcon = L.divIcon({
   iconAnchor: [20, 20],
 })
 
-function MapView() {
+function MapView({ route }) {
   const ambulancePosition = routeData.ambulance.position
   const hospitalPosition = routeData.hospital.position
-  const route = routeData.route
 
   return (
     <MapContainer
-      center={[13.075, 80.255]}
+      center={ambulancePosition}
       zoom={13}
       style={{ height: '100%', width: '100%' }}
     >
@@ -38,13 +31,15 @@ function MapView() {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
-      <Marker position={ambulancePosition} icon={ambulanceIcon}>
-        <Popup>🚑 Ambulance</Popup>
-      </Marker>
+      <Marker
+        position={ambulancePosition}
+        icon={ambulanceIcon}
+      />
 
-      <Marker position={hospitalPosition} icon={hospitalIcon}>
-        <Popup>🏥 Hospital</Popup>
-      </Marker>
+      <Marker
+        position={hospitalPosition}
+        icon={hospitalIcon}
+      />
 
       <Polyline
         positions={route}

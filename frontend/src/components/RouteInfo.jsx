@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { routeData } from '../data'
 
-function RouteInfo() {
+function RouteInfo({ onReroute }) {
   const [routeStarted, setRouteStarted] = useState(false)
   const [rerouting, setRerouting] = useState(false)
 
@@ -13,6 +13,7 @@ function RouteInfo() {
     setRerouting(true)
 
     setTimeout(() => {
+      onReroute()
       setRerouting(false)
       alert('✅ New route calculated!')
     }, 1000)
@@ -59,5 +60,3 @@ function RouteInfo() {
 }
 
 export default RouteInfo
-
-
