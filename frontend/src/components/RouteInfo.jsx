@@ -3,13 +3,19 @@ import { routeData } from '../data'
 
 function RouteInfo() {
   const [routeStarted, setRouteStarted] = useState(false)
+  const [rerouting, setRerouting] = useState(false)
 
   const handleStartRoute = () => {
     setRouteStarted(true)
   }
 
   const handleReroute = () => {
-    alert('🔄 Rerouting...')
+    setRerouting(true)
+
+    setTimeout(() => {
+      setRerouting(false)
+      alert('✅ New route calculated!')
+    }, 1000)
   }
 
   return (
@@ -32,7 +38,11 @@ function RouteInfo() {
       </div>
 
       <div className="status">
-        {routeStarted ? '🚑 Route Started' : `🟢 ${routeData.status}`}
+        {rerouting
+          ? '🔄 Calculating new route...'
+          : routeStarted
+            ? '🚑 Route Started'
+            : `🟢 ${routeData.status}`}
       </div>
 
       <div className="route-buttons">
@@ -40,8 +50,8 @@ function RouteInfo() {
           🚑 Start Route
         </button>
 
-        <button onClick={handleReroute}>
-          🔄 Reroute
+        <button onClick={handleReroute} disabled={rerouting}>
+          {rerouting ? '🔄 Rerouting...' : '🔄 Reroute'}
         </button>
       </div>
     </div>
