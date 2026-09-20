@@ -28,13 +28,14 @@ body {
   height: 100%;
 }
 
-/* Custom map markers */
+/* Map Markers */
 
 .custom-marker {
   background: transparent;
   border: none;
 }
 
+.patient-marker,
 .ambulance-marker,
 .hospital-marker {
   width: 42px;
@@ -81,7 +82,7 @@ body {
   top: 95px;
   right: 20px;
   z-index: 1000;
-  width: 285px;
+  width: 300px;
   padding: 20px;
   background: rgba(255, 255, 255, 0.97);
   border-radius: 14px;
@@ -93,6 +94,44 @@ body {
   font-size: 20px;
   color: #1f2937;
 }
+
+/* Patient / Hospital Selection */
+
+.selection-group {
+  margin-bottom: 15px;
+}
+
+.selection-group label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #374151;
+}
+
+.selection-group select {
+  width: 100%;
+  padding: 10px 11px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: white;
+  color: #111827;
+  font-size: 13px;
+  outline: none;
+  cursor: pointer;
+}
+
+.selection-group select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.12);
+}
+
+.selection-group select:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+/* Route Information */
 
 .info-item {
   display: flex;
@@ -113,6 +152,39 @@ body {
   color: #111827;
 }
 
+.traffic-less {
+  color: green !important;
+}
+
+.traffic-heavy {
+  color: red !important;
+}
+
+/* Loading Message */
+
+.loading-message {
+  margin-top: 12px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Error Message */
+
+.route-error {
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 8px;
+  background: #fef2f2;
+  color: #b91c1c;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
 /* Status */
 
 .status {
@@ -126,6 +198,11 @@ body {
   font-weight: bold;
 }
 
+.status-heavy {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
 /* Route Buttons */
 
 .route-buttons {
@@ -134,27 +211,37 @@ body {
   margin-top: 18px;
 }
 
-.route-buttons button {
+.start-route-button,
+.reroute-button {
   flex: 1;
-  padding: 10px;
+  padding: 11px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  background: #2563eb;
   color: white;
   font-size: 13px;
   font-weight: bold;
   transition: 0.2s ease;
 }
 
-.route-buttons button:hover {
+.start-route-button {
+  background: #2563eb;
+}
+
+.reroute-button {
+  background: #374151;
+}
+
+.start-route-button:hover,
+.reroute-button:hover {
   transform: translateY(-1px);
   opacity: 0.9;
 }
 
-.route-buttons button:disabled {
+.start-route-button:disabled,
+.reroute-button:disabled {
   cursor: not-allowed;
-  opacity: 0.6;
+  opacity: 0.5;
   transform: none;
 }
 
@@ -165,7 +252,7 @@ body {
   bottom: 25px;
   left: 20px;
   z-index: 1000;
-  width: 155px;
+  width: 165px;
   padding: 14px;
   background: rgba(255, 255, 255, 0.97);
   border-radius: 11px;
@@ -194,12 +281,8 @@ body {
   border-radius: 3px;
 }
 
-.legend-line.low {
+.legend-line.less {
   background: green;
-}
-
-.legend-line.moderate {
-  background: orange;
 }
 
 .legend-line.heavy {
@@ -231,13 +314,26 @@ body {
   .route-info {
     top: 78px;
     right: 10px;
-    width: 245px;
+    width: 265px;
     padding: 15px;
   }
 
   .route-info h2 {
     font-size: 17px;
     margin-bottom: 12px;
+  }
+
+  .selection-group {
+    margin-bottom: 10px;
+  }
+
+  .selection-group label {
+    font-size: 12px;
+  }
+
+  .selection-group select {
+    padding: 8px;
+    font-size: 12px;
   }
 
   .info-item {
@@ -261,15 +357,16 @@ body {
     gap: 7px;
   }
 
-  .route-buttons button {
-    padding: 8px 5px;
-    font-size: 11px;
+  .start-route-button,
+  .reroute-button {
+    padding: 9px 6px;
+    font-size: 12px;
   }
 
   .traffic-legend {
     bottom: 15px;
     left: 10px;
-    width: 135px;
+    width: 145px;
     padding: 11px;
   }
 
@@ -302,7 +399,7 @@ body {
   .route-info {
     top: 70px;
     right: 8px;
-    width: 205px;
+    width: 215px;
     padding: 12px;
   }
 
@@ -310,17 +407,22 @@ body {
     font-size: 15px;
   }
 
+  .selection-group label {
+    font-size: 11px;
+  }
+
+  .selection-group select {
+    font-size: 11px;
+  }
+
   .info-item span,
   .info-item strong {
     font-size: 11px;
   }
 
-  .route-buttons {
-    flex-direction: column;
-  }
-
-  .route-buttons button {
-    width: 100%;
+  .start-route-button,
+  .reroute-button {
+    font-size: 10px;
   }
 
   .traffic-legend {
@@ -332,4 +434,48 @@ body {
   .traffic-legend div {
     margin: 5px 0;
   }
+}
+.traffic-signal-marker {
+  font-size: 52px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.emergency-alert-popup {
+  width: 280px;
+  padding: 4px;
+  text-align: center;
+}
+
+.traffic-signal-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.emergency-title {
+  font-size: 19px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.emergency-message {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.police-action {
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: left;
+  margin-bottom: 12px;
+}
+
+.emergency-priority {
+  font-size: 13px;
+  font-weight: 800;
+  padding: 8px;
+  border-radius: 6px;
 }

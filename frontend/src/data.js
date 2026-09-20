@@ -1,22 +1,27 @@
-export const routeData = {
-  ambulance: {
+export const patientLocations = {
+  patient1: {
+    id: 'patient1',
+    name: 'Patient Home 1',
     position: [13.0827, 80.2707],
   },
 
-  hospital: {
+  patient2: {
+    id: 'patient2',
+    name: 'Patient Home 2',
+    position: [13.0885, 80.2810],
+  },
+}
+
+export const hospitals = {
+  hospital1: {
+    id: 'hospital1',
+    name: 'Hospital 1',
     position: [13.0674, 80.2376],
   },
 
-  route: [
-    [13.0827, 80.2707],
-    [13.0785, 80.2640],
-    [13.0740, 80.2570],
-    [13.0700, 80.2490],
-    [13.0674, 80.2376],
-  ],
-
-  distance: '6.8 km',
-  eta: '14 min',
-  traffic: 'Moderate',
-  status: 'Route Active',
+  hospital2: {
+    id: 'hospital2',
+    name: 'Hospital 2',
+    position: [13.0524, 80.2508],
+  },
 }

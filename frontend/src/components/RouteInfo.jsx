@@ -1,50 +1,116 @@
-import { useEffect, useState } from 'react'
-import { routeData } from '../data'
+import { patientLocations, hospitals } from '../data'
 
 function RouteInfo({
-  traffic,
+  selectedPatient,
+  selectedHospital,
+  routeStarted,
+  distance,
   eta,
-  rerouting,
-  onTrafficChange,
+  traffic,
+  loadingRoutes,
+  error,
+  onPatientChange,
+  onHospitalChange,
+  onStartRoute,
   onReroute,
 }) {
-  const [routeStarted, setRouteStarted] = useState(false)
-
-  useEffect(() => {
-    const trafficLevels = [
-      { name: 'Low', eta: '10 min' },
-      { name: 'Moderate', eta: '14 min' },
-      { name: 'Heavy', eta: '20 min' },
-    ]
-
-    let index = 1
-
-    const trafficTimer = setInterval(() => {
-      const currentTraffic = trafficLevels[index]
-
-      onTrafficChange(currentTraffic.name, currentTraffic.eta)
-
-      index = (index + 1) % trafficLevels.length
-    }, 5000)
-
-    return () => clearInterval(trafficTimer)
-  }, [onTrafficChange])
-
   const handleStartRoute = () => {
-    setRouteStarted(true)
+    if (
+      !selectedPatient ||
+      !selectedHospital ||
+      loadingRoutes
+    ) {
+      return
+    }
+
+    onStartRoute()
   }
 
   const handleReroute = () => {
+    if (
+      !routeStarted ||
+      loadingRoutes
+    ) {
+      return
+    }
+
     onReroute()
   }
+
+  const isHeavyTraffic =
+    traffic === 'Heavy Traffic'
 
   return (
     <div className="route-info">
       <h2>🚑 Route Details</h2>
 
+      <div className="selection-group">
+        <label htmlFor="patient-select">
+          🏠 Patient Location
+        </label>
+
+        <select
+          id="patient-select"
+          value={selectedPatient}
+          onChange={(event) =>
+            onPatientChange(
+              event.target.value
+            )
+          }
+          disabled={loadingRoutes}
+        >
+          <option value="">
+            Select Patient Home
+          </option>
+
+          {Object.values(
+            patientLocations
+          ).map((patient) => (
+            <option
+              key={patient.id}
+              value={patient.id}
+            >
+              {patient.name}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div className="selection-group">
+        <label htmlFor="hospital-select">
+          🏥 Destination Hospital
+        </label>
+
+        <select
+          id="hospital-select"
+          value={selectedHospital}
+          onChange={(event) =>
+            onHospitalChange(
+              event.target.value
+            )
+          }
+          disabled={loadingRoutes}
+        >
+          <option value="">
+            Select Hospital
+          </option>
+
+          {Object.values(
+            hospitals
+          ).map((hospital) => (
+            <option
+              key={hospital.id}
+              value={hospital.id}
+            >
+              {hospital.name}
+            </option>
+          ))}
+        </select>
+      </div>
+
       <div className="info-item">
         <span>📍 Distance</span>
-        <strong>{routeData.distance}</strong>
+        <strong>{distance}</strong>
       </div>
 
       <div className="info-item">
@@ -54,24 +120,68 @@ function RouteInfo({
 
       <div className="info-item">
         <span>🚦 Traffic</span>
-        <strong>{traffic}</strong>
+
+        <strong
+          className={
+            isHeavyTraffic
+              ? 'traffic-heavy'
+              : 'traffic-less'
+          }
+        >
+          {traffic}
+        </strong>
       </div>
 
-      <div className="status">
-        {rerouting
-          ? '🔄 Calculating new route...'
-          : routeStarted
-            ? '🚑 Route Started'
-            : `🟢 ${routeData.status}`}
+      {loadingRoutes && (
+        <div className="loading-message">
+          🗺️ Finding two road routes...
+        </div>
+      )}
+
+      {error && (
+        <div className="route-error">
+          ⚠️ {error}
+        </div>
+      )}
+
+      <div
+        className={`status ${
+          isHeavyTraffic
+            ? 'status-heavy'
+            : ''
+        }`}
+      >
+        {routeStarted
+          ? isHeavyTraffic
+            ? '🔴 Heavy Traffic Route Active'
+            : '🟢 Less Traffic Route Active'
+          : '📍 Select locations and start the route'}
       </div>
 
       <div className="route-buttons">
-        <button onClick={handleStartRoute}>
-          🚑 Start Route
+        <button
+          className="start-route-button"
+          onClick={handleStartRoute}
+          disabled={
+            !selectedPatient ||
+            !selectedHospital ||
+            loadingRoutes
+          }
+        >
+          {loadingRoutes
+            ? '⏳ Finding Routes...'
+            : '🚑 Start Route'}
         </button>
 
-        <button onClick={handleReroute} disabled={rerouting}>
-          {rerouting ? '🔄 Rerouting...' : '🔄 Reroute'}
+        <button
+          className="reroute-button"
+          onClick={handleReroute}
+          disabled={
+            !routeStarted ||
+            loadingRoutes
+          }
+        >
+          🔄 Reroute
         </button>
       </div>
     </div>

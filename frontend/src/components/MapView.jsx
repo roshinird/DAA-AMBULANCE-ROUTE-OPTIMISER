@@ -1,18 +1,22 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   MapContainer,
   TileLayer,
   Polyline,
   Marker,
-  CircleMarker,
   Popup,
+  CircleMarker,
+  useMap,
 } from 'react-leaflet'
 import L from 'leaflet'
-import { routeData } from '../data'
+import {
+  patientLocations,
+  hospitals,
+} from '../data'
 
-const ambulanceIcon = L.divIcon({
+const patientIcon = L.divIcon({
   className: 'custom-marker',
-  html: '<div class="ambulance-marker">🚑</div>',
+  html: '<div class="patient-marker">🏠</div>',
   iconSize: [42, 42],
   iconAnchor: [21, 21],
 })
@@ -24,48 +28,255 @@ const hospitalIcon = L.divIcon({
   iconAnchor: [21, 21],
 })
 
-function MapView({ route, traffic }) {
-  const [ambulancePosition, setAmbulancePosition] = useState(
-    routeData.ambulance.position
-  )
+const ambulanceIcon = L.divIcon({
+  className: 'custom-marker',
+  html: '<div class="ambulance-marker">🚑</div>',
+  iconSize: [42, 42],
+  iconAnchor: [21, 21],
+})
 
-  const trafficColor =
-    traffic === 'Heavy'
-      ? 'red'
-      : traffic === 'Moderate'
-        ? 'orange'
-        : 'green'
+const trafficSignalIcon = L.divIcon({
+  className: 'custom-marker',
+  html: '<div class="traffic-signal-marker">🚦</div>',
+  iconSize: [70, 70],
+  iconAnchor: [35, 35],
+})
+
+function RouteViewport({ route }) {
+  const map = useMap()
 
   useEffect(() => {
-    if (!route || route.length < 2) return
+    if (!route || route.length < 2) {
+      return
+    }
+
+    const bounds = L.latLngBounds(route)
+
+    map.fitBounds(bounds, {
+      padding: [60, 60],
+      maxZoom: 15,
+    })
+  }, [map, route])
+
+  return null
+}
+
+function MapView({
+  route,
+  traffic,
+  selectedPatient,
+  selectedHospital,
+  routeStarted,
+  routeVersion,
+}) {
+  const [
+    ambulancePosition,
+    setAmbulancePosition,
+  ] = useState(null)
+
+  const [
+    hasArrived,
+    setHasArrived,
+  ] = useState(false)
+
+  const [
+    alertShown,
+    setAlertShown,
+  ] = useState(false)
+
+  const trafficSignalRef = useRef(null)
+
+  const trafficColor =
+    traffic === 'Heavy Traffic'
+      ? 'red'
+      : 'green'
+
+  /*
+   * The special traffic signal exists
+   * only when the Less Traffic route
+   * is active.
+   *
+   * It is placed around 55% along
+   * the actual road route.
+   */
+  const trafficSignalPosition =
+    traffic === 'Less Traffic' &&
+    route &&
+    route.length > 2
+      ? route[
+          Math.floor(
+            route.length * 0.55
+          )
+        ]
+      : null
+
+  /*
+   * Calculate approximate distance
+   * between two latitude/longitude
+   * positions in meters.
+   */
+  const calculateDistance = (
+    position1,
+    position2
+  ) => {
+    if (!position1 || !position2) {
+      return Infinity
+    }
+
+    const earthRadius = 6371000
+
+    const latitude1 =
+      (position1[0] * Math.PI) / 180
+
+    const latitude2 =
+      (position2[0] * Math.PI) / 180
+
+    const latitudeDifference =
+      ((position2[0] -
+        position1[0]) *
+        Math.PI) /
+      180
+
+    const longitudeDifference =
+      ((position2[1] -
+        position1[1]) *
+        Math.PI) /
+      180
+
+    const a =
+      Math.sin(
+        latitudeDifference / 2
+      ) *
+        Math.sin(
+          latitudeDifference / 2
+        ) +
+      Math.cos(latitude1) *
+        Math.cos(latitude2) *
+        Math.sin(
+          longitudeDifference / 2
+        ) *
+        Math.sin(
+          longitudeDifference / 2
+        )
+
+    const c =
+      2 *
+      Math.atan2(
+        Math.sqrt(a),
+        Math.sqrt(1 - a)
+      )
+
+    return earthRadius * c
+  }
+
+  /*
+   * Reset the emergency alert whenever
+   * a new route animation starts.
+   */
+  useEffect(() => {
+    setAlertShown(false)
+  }, [routeVersion])
+
+  /*
+   * Automatically open the Traffic Signal
+   * popup when the ambulance comes close
+   * to the special node.
+   */
+  useEffect(() => {
+    if (
+      traffic !== 'Less Traffic' ||
+      !trafficSignalPosition ||
+      !ambulancePosition ||
+      alertShown
+    ) {
+      return
+    }
+
+    const distanceToSignal =
+      calculateDistance(
+        ambulancePosition,
+        trafficSignalPosition
+      )
+
+    /*
+     * Alert distance:
+     * approximately 60 meters.
+     */
+    if (distanceToSignal <= 60) {
+      setAlertShown(true)
+
+      if (
+        trafficSignalRef.current
+      ) {
+        trafficSignalRef.current.openPopup()
+      }
+    }
+  }, [
+    ambulancePosition,
+    traffic,
+    trafficSignalPosition,
+    alertShown,
+  ])
+
+  /*
+   * Ambulance animation.
+   */
+  useEffect(() => {
+    if (
+      !routeStarted ||
+      !route ||
+      route.length < 2 ||
+      routeVersion === 0
+    ) {
+      setAmbulancePosition(null)
+      setHasArrived(false)
+      return
+    }
 
     let segmentIndex = 0
     let animationFrame = null
     let segmentStartTime = null
     let cancelled = false
 
-    const segmentDuration = 4000
+    const totalAnimationTime = 15000
+
+    const segmentDuration =
+      totalAnimationTime /
+      (route.length - 1)
+
+    setAmbulancePosition(route[0])
+    setHasArrived(false)
 
     const animate = (timestamp) => {
-      if (cancelled) return
+      if (cancelled) {
+        return
+      }
 
       if (segmentStartTime === null) {
         segmentStartTime = timestamp
       }
 
       const progress = Math.min(
-        (timestamp - segmentStartTime) / segmentDuration,
+        (timestamp - segmentStartTime) /
+          segmentDuration,
         1
       )
 
-      const start = route[segmentIndex]
-      const end = route[segmentIndex + 1]
+      const start =
+        route[segmentIndex]
+
+      const end =
+        route[segmentIndex + 1]
 
       const latitude =
-        start[0] + (end[0] - start[0]) * progress
+        start[0] +
+        (end[0] - start[0]) *
+          progress
 
       const longitude =
-        start[1] + (end[1] - start[1]) * progress
+        start[1] +
+        (end[1] - start[1]) *
+          progress
 
       setAmbulancePosition([
         latitude,
@@ -73,168 +284,319 @@ function MapView({ route, traffic }) {
       ])
 
       if (progress < 1) {
-        animationFrame = requestAnimationFrame(animate)
+        animationFrame =
+          requestAnimationFrame(animate)
+
         return
       }
 
       segmentIndex += 1
       segmentStartTime = null
 
-      if (segmentIndex < route.length - 1) {
-        animationFrame = requestAnimationFrame(animate)
+      if (
+        segmentIndex <
+        route.length - 1
+      ) {
+        animationFrame =
+          requestAnimationFrame(animate)
+
         return
       }
 
-      // =====================================
-      // DESTINATION REACHED
-      // =====================================
+      const destination =
+        route[route.length - 1]
 
-      const destination = route[route.length - 1]
+      setAmbulancePosition(
+        destination
+      )
 
-      // Keep ambulance at destination
-      setAmbulancePosition([
-        destination[0],
-        destination[1],
-      ])
+      setHasArrived(true)
 
-      // Do not start another animation
       animationFrame = null
     }
 
-    animationFrame = requestAnimationFrame(animate)
+    animationFrame =
+      requestAnimationFrame(animate)
 
     return () => {
       cancelled = true
 
       if (animationFrame !== null) {
-        cancelAnimationFrame(animationFrame)
+        cancelAnimationFrame(
+          animationFrame
+        )
       }
     }
-  }, [])
+  }, [routeVersion])
 
-  // Final destination
-  const destination = route[route.length - 1]
+  const destination =
+    route && route.length > 0
+      ? route[route.length - 1]
+      : null
 
-  // Check whether ambulance reached destination
-  const hasArrived =
-    ambulancePosition[0] === destination[0] &&
-    ambulancePosition[1] === destination[1]
-
-  // Move ambulance slightly visually after arrival
-  // so both ambulance and hospital remain visible.
-  const displayedAmbulancePosition = hasArrived
-    ? [
-        ambulancePosition[0] + 0.0002,
-        ambulancePosition[1],
-      ]
-    : ambulancePosition
+  const displayedAmbulancePosition =
+    hasArrived &&
+    ambulancePosition
+      ? [
+          ambulancePosition[0] +
+            0.0002,
+          ambulancePosition[1],
+        ]
+      : ambulancePosition
 
   return (
     <MapContainer
-      center={routeData.ambulance.position}
+      center={[13.075, 80.258]}
       zoom={13}
       style={{
         width: '100%',
         height: '100%',
       }}
     >
-      {/* OpenStreetMap */}
       <TileLayer
         attribution="&copy; OpenStreetMap contributors"
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
-      {/* =====================================
-          ROUTE
-          ===================================== */}
+      <RouteViewport route={route} />
 
-      <Polyline
-        positions={route}
-        pathOptions={{
-          color: trafficColor,
-          weight: 7,
-          opacity: 0.85,
-        }}
-      />
+      {routeStarted &&
+        route &&
+        route.length > 1 && (
+          <Polyline
+            positions={route}
+            pathOptions={{
+              color: trafficColor,
+              weight: 7,
+              opacity: 0.9,
+            }}
+          />
+        )}
 
-      {/* =====================================
-          HOSPITAL
-          ===================================== */}
+      {/*
+       * Traffic Signal node.
+       *
+       * This marker is rendered ONLY
+       * for the Less Traffic route.
+       */}
+      {routeStarted &&
+        traffic === 'Less Traffic' &&
+        trafficSignalPosition && (
+          <Marker
+            ref={trafficSignalRef}
+            position={
+              trafficSignalPosition
+            }
+            icon={trafficSignalIcon}
+            zIndexOffset={2000}
+          >
+            <Popup
+              closeButton={true}
+              autoClose={false}
+            >
+              <div
+                style={{
+                  minWidth: '260px',
+                  lineHeight: '1.5',
+                }}
+              >
+                <strong>
+                  🚦 Traffic Signal
+                </strong>
 
-      <Marker
-        position={routeData.hospital.position}
-        icon={hospitalIcon}
-        zIndexOffset={1000}
-      >
-        <Popup>
-          🏥 Hospital
-        </Popup>
-      </Marker>
+                <hr
+                  style={{
+                    margin:
+                      '8px 0',
+                  }}
+                />
 
-      {/* =====================================
-          AMBULANCE
-          ===================================== */}
+                <strong>
+                  🚑 EMERGENCY ALERT
+                </strong>
 
-      <Marker
-        position={displayedAmbulancePosition}
-        icon={ambulanceIcon}
-        zIndexOffset={2000}
-      >
-        <Popup>
-          🚑 Ambulance
-        </Popup>
-      </Marker>
+                <p
+                  style={{
+                    margin:
+                      '6px 0',
+                  }}
+                >
+                  Ambulance approaching
+                  your junction.
+                </p>
 
-      {/* =====================================
-          STARTING POINT
-          ===================================== */}
+                <p
+                  style={{
+                    margin:
+                      '6px 0',
+                  }}
+                >
+                  <strong>
+                    Traffic Police Action
+                    Required:
+                  </strong>{' '}
+                  Clear and control traffic
+                  to provide an unobstructed
+                  passage for the ambulance.
+                </p>
 
-      <CircleMarker
-        center={route[0]}
-        radius={6}
-        pathOptions={{
-          color: 'white',
-          fillColor: 'green',
-          fillOpacity: 1,
-          weight: 2,
-        }}
-      />
+                <strong>
+                  Priority: EMERGENCY VEHICLE
+                </strong>
+              </div>
+            </Popup>
+          </Marker>
+        )}
 
-      {/* =====================================
-          DESTINATION
-          ===================================== */}
+      {/*
+       * Highlight the Traffic Signal
+       * node on the map.
+       */}
+      {routeStarted &&
+        traffic === 'Less Traffic' &&
+        trafficSignalPosition && (
+          <CircleMarker
+            center={
+              trafficSignalPosition
+            }
+            radius={12}
+            pathOptions={{
+              color: 'orange',
+              fillColor: 'yellow',
+              fillOpacity: 0.35,
+              weight: 3,
+            }}
+          />
+        )}
 
-      <CircleMarker
-        center={route[route.length - 1]}
-        radius={7}
-        pathOptions={{
-          color: 'white',
-          fillColor: 'red',
-          fillOpacity: 1,
-          weight: 2,
-        }}
-      />
+      {Object.values(
+        patientLocations
+      ).map((patient) => {
+        const isSelected =
+          patient.id === selectedPatient
 
-      {/* =====================================
-          TRAFFIC LEGEND
-          ===================================== */}
+        return (
+          <Marker
+            key={patient.id}
+            position={patient.position}
+            icon={patientIcon}
+            zIndexOffset={
+              isSelected ? 1500 : 800
+            }
+          >
+            <Popup>
+              <strong>
+                🏠 {patient.name}
+              </strong>
+
+              {isSelected && (
+                <div>
+                  Selected patient location
+                </div>
+              )}
+            </Popup>
+          </Marker>
+        )
+      })}
+
+      {Object.values(hospitals).map(
+        (hospital) => {
+          const isSelected =
+            hospital.id ===
+            selectedHospital
+
+          return (
+            <Marker
+              key={hospital.id}
+              position={hospital.position}
+              icon={hospitalIcon}
+              zIndexOffset={
+                isSelected ? 1500 : 1000
+              }
+            >
+              <Popup>
+                <strong>
+                  🏥 {hospital.name}
+                </strong>
+
+                {isSelected && (
+                  <div>
+                    Selected destination
+                  </div>
+                )}
+              </Popup>
+            </Marker>
+          )
+        }
+      )}
+
+      {routeStarted &&
+        selectedPatient &&
+        patientLocations[
+          selectedPatient
+        ] && (
+          <CircleMarker
+            center={
+              patientLocations[
+                selectedPatient
+              ].position
+            }
+            radius={7}
+            pathOptions={{
+              color: 'white',
+              fillColor: 'green',
+              fillOpacity: 1,
+              weight: 2,
+            }}
+          />
+        )}
+
+      {routeStarted &&
+        destination && (
+          <CircleMarker
+            center={destination}
+            radius={7}
+            pathOptions={{
+              color: 'white',
+              fillColor: 'red',
+              fillOpacity: 1,
+              weight: 2,
+            }}
+          />
+        )}
+
+      {routeStarted &&
+        displayedAmbulancePosition && (
+          <Marker
+            position={
+              displayedAmbulancePosition
+            }
+            icon={ambulanceIcon}
+            zIndexOffset={2500}
+          >
+            <Popup>
+              🚑 Ambulance
+
+              {hasArrived && (
+                <div>
+                  Arrived at hospital
+                </div>
+              )}
+            </Popup>
+          </Marker>
+        )}
 
       <div className="traffic-legend">
-        <h3>🚦 Traffic</h3>
+        <h3>🚦 Routes</h3>
 
         <div>
-          <span className="legend-line low"></span>
-          <span>Low</span>
-        </div>
-
-        <div>
-          <span className="legend-line moderate"></span>
-          <span>Moderate</span>
+          <span className="legend-line less"></span>
+          <span>Less Traffic</span>
         </div>
 
         <div>
           <span className="legend-line heavy"></span>
-          <span>Heavy</span>
+          <span>Heavy Traffic</span>
         </div>
       </div>
     </MapContainer>
