@@ -89,11 +89,6 @@ def get_dynamic_travel_time(edge, traffic_conditions):
     Calculate the current travel time for an edge.
 
     traffic_conditions maps a directed edge to a traffic condition.
-
-    Example:
-        {
-            ("101", "102"): "heavy"
-        }
     """
 
     source = edge.get("source")
@@ -139,20 +134,8 @@ def a_star(
         blocked_edges:
             Set of directed edges that are currently blocked.
 
-            Example:
-                {
-                    ("101", "102"),
-                    ("205", "206")
-                }
-
         traffic_conditions:
             Dictionary of traffic conditions for directed edges.
-
-            Example:
-                {
-                    ("101", "102"): "heavy",
-                    ("205", "206"): "moderate"
-                }
 
     Returns:
         path:
@@ -258,6 +241,31 @@ def a_star(
     return None, float("inf")
 
 
+def reroute(
+    graph,
+    nodes,
+    current_node,
+    destination,
+    blocked_edges=None,
+    traffic_conditions=None
+):
+    """
+    Recalculate the best route from the ambulance's current position.
+
+    This is used when traffic conditions or road availability change
+    while an ambulance is already travelling.
+    """
+
+    return a_star(
+        graph,
+        nodes,
+        current_node,
+        destination,
+        blocked_edges=blocked_edges,
+        traffic_conditions=traffic_conditions
+    )
+
+
 def reconstruct_path(came_from, current):
     """Reconstruct the route from goal back to start."""
 
@@ -285,10 +293,7 @@ def route_is_valid(graph, path, blocked_edges=None):
 
     for source, target in zip(path, path[1:]):
 
-        if (
-            source,
-            target
-        ) in blocked_edges:
+        if (source, target) in blocked_edges:
             return False
 
         neighbours = graph.get(source, [])
@@ -316,3 +321,4 @@ if __name__ == "__main__":
     print("Dynamic routing support enabled.")
     print("Traffic levels: normal, light, moderate, heavy.")
     print("Road closure support: enabled.")
+    print("Dynamic rerouting support: enabled.")
