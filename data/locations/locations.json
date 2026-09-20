@@ -1,0 +1,47 @@
+{
+  "P1": {
+    "type": "patient",
+    "name": "Raheja Residency Apartments",
+    "latitude": 12.928343,
+    "longitude": 77.6317673,
+    "osm_id": 32316800,
+    "graph_node_id": "10100613692",
+    "distance_to_graph_node_m": 20.6
+  },
+  "P2": {
+    "type": "patient",
+    "name": "Wild Grass Apartments",
+    "latitude": 12.9330438,
+    "longitude": 77.6372421,
+    "osm_id": 1242263773,
+    "graph_node_id": "12183466002",
+    "distance_to_graph_node_m": 15.06
+  },
+  "P3": {
+    "type": "patient",
+    "name": "KSRP Senior Officer's Residential Quarters",
+    "latitude": 12.9235398,
+    "longitude": 77.6219385,
+    "osm_id": 1125892173,
+    "graph_node_id": "7488258454",
+    "distance_to_graph_node_m": 21.49
+  },
+  "H1": {
+    "type": "hospital",
+    "name": "St. John's Medical College Hospital",
+    "latitude": 12.9296784,
+    "longitude": 77.6183585,
+    "osm_id": 17069662,
+    "graph_node_id": "7424464489",
+    "distance_to_graph_node_m": 37.17
+  },
+  "H2": {
+    "type": "hospital",
+    "name": "Apollo Spectra Hospitals",
+    "latitude": 12.9338175,
+    "longitude": 77.6201615,
+    "osm_id": 5915409411,
+    "graph_node_id": "363763159",
+    "distance_to_graph_node_m": 20.68
+  }
+}
