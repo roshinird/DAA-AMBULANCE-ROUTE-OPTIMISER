@@ -1,0 +1,22 @@
+# Raw OSM data
+*.pbf
+*.osm.pbf
+*.osm.gz
+*.osm.xml
+*.osm
+
+# Temporary/cache files
+cache/
+*.tmp
+*.temp
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
