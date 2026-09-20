@@ -8,6 +8,15 @@ EDGES_FILE = "data/processed/edges.json"
 
 MAX_SPEED_KPH = 60.0
 
+# Dynamic road condition settings.
+# These affect only Member 2's routing logic.
+TRAFFIC_MULTIPLIERS = {
+    "normal": 1.0,
+    "light": 1.15,
+    "moderate": 1.35,
+    "heavy": 1.75,
+}
+
 
 def load_graph():
     """Load nodes and directed edges from Member 1's OSM graph."""
@@ -44,17 +53,14 @@ def heuristic(node_a, node_b, nodes):
     """
     Estimate the minimum possible travel time between two nodes.
 
-    The straight-line distance is divided by the maximum graph speed.
-    This keeps the heuristic in seconds, matching the travel-time cost
-    used by A*.
+    Straight-line distance is divided by the maximum graph speed.
+    The result is expressed in seconds, matching the A* travel-time cost.
     """
 
     lat1, lon1 = nodes[node_a]
     lat2, lon2 = nodes[node_b]
 
-    radius = 6371000  # Earth radius in metres
-
-    # Maximum speed in the graph: 60 km/h converted to m/s.
+    radius = 6371000
     max_speed_mps = MAX_SPEED_KPH * 1000 / 3600
 
     lat1_rad = math.radians(lat1)
@@ -78,18 +84,103 @@ def heuristic(node_a, node_b, nodes):
     return distance / max_speed_mps
 
 
-def a_star(graph, nodes, start, goal):
+def get_dynamic_travel_time(edge, traffic_conditions):
     """
-    Find the shortest-travel-time path from start to goal using A*.
+    Calculate the current travel time for an edge.
+
+    traffic_conditions maps a directed edge to a traffic condition.
+
+    Example:
+        {
+            ("101", "102"): "heavy"
+        }
+    """
+
+    source = edge.get("source")
+    target = edge["target"]
+
+    condition = traffic_conditions.get(
+        (source, target),
+        "normal"
+    )
+
+    multiplier = TRAFFIC_MULTIPLIERS.get(
+        condition,
+        TRAFFIC_MULTIPLIERS["normal"]
+    )
+
+    return edge["travel_time_s"] * multiplier
+
+
+def a_star(
+    graph,
+    nodes,
+    start,
+    goal,
+    blocked_edges=None,
+    traffic_conditions=None
+):
+    """
+    Find the shortest-travel-time route using A*.
+
+    Parameters:
+        graph:
+            Directed road graph.
+
+        nodes:
+            Node coordinates.
+
+        start:
+            Starting graph node ID.
+
+        goal:
+            Destination graph node ID.
+
+        blocked_edges:
+            Set of directed edges that are currently blocked.
+
+            Example:
+                {
+                    ("101", "102"),
+                    ("205", "206")
+                }
+
+        traffic_conditions:
+            Dictionary of traffic conditions for directed edges.
+
+            Example:
+                {
+                    ("101", "102"): "heavy",
+                    ("205", "206"): "moderate"
+                }
 
     Returns:
-        path: list of node IDs
-        total_time: total travel time in seconds
+        path:
+            List of node IDs.
+
+        total_time:
+            Estimated travel time in seconds.
     """
+
+    if blocked_edges is None:
+        blocked_edges = set()
+
+    if traffic_conditions is None:
+        traffic_conditions = {}
+
+    if start not in nodes:
+        raise ValueError(f"Start node '{start}' does not exist.")
+
+    if goal not in nodes:
+        raise ValueError(f"Goal node '{goal}' does not exist.")
 
     open_set = []
 
-    start_heuristic = heuristic(start, goal, nodes)
+    start_heuristic = heuristic(
+        start,
+        goal,
+        nodes
+    )
 
     heapq.heappush(
         open_set,
@@ -99,7 +190,7 @@ def a_star(graph, nodes, start, goal):
     came_from = {}
 
     g_score = {
-        start: 0
+        start: 0.0
     }
 
     while open_set:
@@ -107,16 +198,38 @@ def a_star(graph, nodes, start, goal):
         _, current = heapq.heappop(open_set)
 
         if current == goal:
-            path = reconstruct_path(came_from, current)
+            path = reconstruct_path(
+                came_from,
+                current
+            )
+
             return path, g_score[current]
 
         for edge in graph.get(current, []):
 
             neighbor = edge["target"]
 
+            edge_key = (
+                current,
+                neighbor
+            )
+
+            # Skip roads that are currently blocked.
+            if edge_key in blocked_edges:
+                continue
+
+            # Calculate the current travel time.
+            current_edge = dict(edge)
+            current_edge["source"] = current
+
+            travel_time = get_dynamic_travel_time(
+                current_edge,
+                traffic_conditions
+            )
+
             tentative_g_score = (
                 g_score[current]
-                + edge["travel_time_s"]
+                + travel_time
             )
 
             if tentative_g_score < g_score.get(
@@ -159,11 +272,47 @@ def reconstruct_path(came_from, current):
     return path
 
 
+def route_is_valid(graph, path, blocked_edges=None):
+    """
+    Check whether every step in a route exists and is not blocked.
+    """
+
+    if not path:
+        return False
+
+    if blocked_edges is None:
+        blocked_edges = set()
+
+    for source, target in zip(path, path[1:]):
+
+        if (
+            source,
+            target
+        ) in blocked_edges:
+            return False
+
+        neighbours = graph.get(source, [])
+
+        if not any(
+            edge["target"] == target
+            for edge in neighbours
+        ):
+            return False
+
+    return True
+
+
 if __name__ == "__main__":
 
     nodes, graph = load_graph()
 
     print(f"Loaded {len(nodes)} nodes.")
     print(
-        f"Loaded {sum(len(edges) for edges in graph.values())} directed edges."
+        f"Loaded "
+        f"{sum(len(edges) for edges in graph.values())} "
+        f"directed edges."
     )
+
+    print("Dynamic routing support enabled.")
+    print("Traffic levels: normal, light, moderate, heavy.")
+    print("Road closure support: enabled.")
